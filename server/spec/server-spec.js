@@ -16,12 +16,15 @@ describe('Persistent Node Chat Server', () => {
   beforeAll((done) => {
     dbConnection.connect();
 
-       const tablename = ''; // TODO: fill this out
+    const users = 'users';
+    const messages = 'messages';
 
     /* Empty the db table before all tests so that multiple tests
      * (or repeated runs of the tests)  will not fail when they should be passing
      * or vice versa */
-    dbConnection.query(`truncate ${tablename}`, done);
+    dbConnection.query(`truncate ${users}`, done);
+    dbConnection.query(`truncate ${messages}`, done);
+
   }, 6500);
 
   afterAll(() => {
@@ -65,11 +68,11 @@ describe('Persistent Node Chat Server', () => {
 
   it('Should output all messages from the DB', (done) => {
     // Let's insert a message into the db
-       const queryString = '';
-       const queryArgs = [];
+    const queryString = '';
+    const queryArgs = [];
     /* TODO: The exact query string and query args to use here
      * depend on the schema you design, so I'll leave them up to you. */
-    dbConnection.query(queryString, queryArgs, (err) => {
+    dbConnection.query(queryString, queryArgs, (err, rows) => {
       if (err) {
         throw err;
       }
