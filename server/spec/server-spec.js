@@ -36,7 +36,7 @@ describe('Persistent Node Chat Server', () => {
     const message = 'In mercy\'s name, three days is all I need.';
     const roomname = 'Hello';
     // Create a user on the chat server database.
-    axios.post(`${API_URL}/users`, { username })
+    axios.post(`${API_URL}/users`, { username }) // { username: username} -> req.body req.body.xxx;
       .then(() => {
         // Post a message to the node chat server:
         return axios.post(`${API_URL}/messages`, { username, message, roomname });
