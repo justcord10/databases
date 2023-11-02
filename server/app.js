@@ -18,6 +18,7 @@ app.set('port', 3000);
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
+// app.use(express.urlencoded()); axios
 
 // Set up our routes
 app.use('/classes', router);
